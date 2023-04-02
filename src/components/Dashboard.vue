@@ -93,8 +93,8 @@ const findWeather = () => {
   </div>
 
 
-  <div class="mt-40">
-    <span class="text-2xl p-8 font-semibold">Weather</span>
+  <div class="mt-40 max-w-lg w-full mx-auto px-6">
+    <span class="text-2xl font-semibold">Weather</span>
     <div class="flex justify-center gap-4 mt-4">
       <input v-model="cityInput" type="text" class="bg-white py-2 pl-3 text-left ring-1 ring-inset ring-gray-300 rounded-lg text-slate-800" placeholder="Enter the city" v-on:keyup.enter="findWeather()">
       <button class="bg-indigo-500 text-white font-medium px-2 py-1 rounded-md hover:bg-indigo-600" @click="findWeather()">Submit</button>
