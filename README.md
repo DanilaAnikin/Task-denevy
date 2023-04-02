@@ -1,5 +1,10 @@
-git pull
+Tech used:
+- Vite
+- Vue.js
+- Heroicons
+- Tailwind css
 
-npm install
-
-npm run dev
+Manual installation:
+  - Clone this repo
+  - Run npm install
+  - Run npm run dev
