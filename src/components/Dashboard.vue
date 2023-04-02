@@ -93,16 +93,18 @@ const findWeather = () => {
   </div>
 
 
-  <div class="mt-40 flex justify-center gap-4">
-    <input v-model="cityInput" type="text" class="bg-white py-2 pl-3 text-left ring-1 ring-inset ring-gray-300 rounded-lg text-slate-800" placeholder="Enter the city" v-on:keyup.enter="findWeather()">
-    <button class="bg-indigo-500 text-white font-medium px-2 py-1 rounded-md hover:bg-indigo-600" @click="findWeather()">Submit</button>
+  <div class="mt-40">
+    <span class="text-2xl p-8 font-semibold">Weather</span>
+    <div class="flex justify-center gap-4 mt-4">
+      <input v-model="cityInput" type="text" class="bg-white py-2 pl-3 text-left ring-1 ring-inset ring-gray-300 rounded-lg text-slate-800" placeholder="Enter the city" v-on:keyup.enter="findWeather()">
+      <button class="bg-indigo-500 text-white font-medium px-2 py-1 rounded-md hover:bg-indigo-600" @click="findWeather()">Submit</button>
+    </div>
+    <div v-if="cityName" class="max-w-2xl p-6 w-full bg-slate-100 mx-auto mt-10 rounded-md">
+      <span class="block text-3xl text-center mb-4 font-medium">{{ cityName }}</span>
+      <span v-if="cityName" class="block text-lg text-center my-4">Temperature: {{ cityTemp }}</span>
+      <span v-if="cityName" class="block text-lg text-center mt-4">Description: {{ cityDesc }}</span>
+    </div>
   </div>
-  <div v-if="cityName" class="max-w-2xl p-6 w-full bg-slate-100 mx-auto mt-10 rounded-md">
-    <span class="block text-3xl text-center mb-4 font-medium">{{ cityName }}</span>
-    <span v-if="cityName" class="block text-lg text-center my-4">Temperature: {{ cityTemp }}</span>
-    <span v-if="cityName" class="block text-lg text-center mt-4">Description: {{ cityDesc }}</span>
-  </div>
-
 </template>
 
 <style scoped>
