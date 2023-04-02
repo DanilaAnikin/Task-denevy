@@ -6,5 +6,5 @@ Tech used:
 
 Manual installation:
   - Clone this repo
-  - Run npm install
-  - Run npm run dev
+  - Run 'npm install'
+  - Run 'npm run dev'
