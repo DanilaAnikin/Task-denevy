@@ -51,10 +51,10 @@ const findWeather = () => {
     cityName.value = data['name'];
     cityTemp.value = data['main']['temp'];
     cityDesc.value = data['weather'][0]['description'];
-    cityInput.value = ''
   })
 
   .catch(err => alert("Wrong city name!"))
+  cityInput.value = ''
 }
 // button.addEventListener('click', function(name){
 // fetch('https://api.openweathermap.org/data/2.5/weather?q='+input.value+'&appid=50a7aa80fa492fa92e874d23ad061374')
@@ -75,13 +75,13 @@ const findWeather = () => {
 </script>
 
 <template>
-  <div class="max-w-4xl mx-auto mt-40">
+  <div class="max-w-4xl mx-auto mt-40 todo">
     <div class="flex justify-between">
-      <div class="flex items-center mb-5">
-          <span class="mr-5 font-semibold text-3xl">Todos</span>
+      <div class="flex mb-3 mr-2 col">
+          <span class="mr-5 font-semibold text-3xl header">Todos</span>
           <AddButton @add="createOpened=true"/>
       </div>
-      <div class="flex items-center">
+      <div class="flex items-center mb-3 col">
         <span class="text-sm mr-2">Filter by category</span>
         <CategoryPicker :categories="[Category.NONE, ...categories]" :value="categoryFilter" @update:value="categoryFilter = $event" class="min-w-72"/>
       </div>
@@ -94,13 +94,29 @@ const findWeather = () => {
 
 
   <div class="mt-40 flex justify-center gap-4">
-    <input v-model="cityInput" type="text" class="bg-slate-200 text-slate-800 rounded-sm p-2 text-center" placeholder="Enter the city" v-on:keyup.enter="findWeather()">
+    <input v-model="cityInput" type="text" class="bg-white py-2 pl-3 text-left ring-1 ring-inset ring-gray-300 rounded-lg text-slate-800" placeholder="Enter the city" v-on:keyup.enter="findWeather()">
     <button class="bg-indigo-500 text-white font-medium px-2 py-1 rounded-md hover:bg-indigo-600" @click="findWeather()">Submit</button>
   </div>
-  <div class="max-w-2xl p-6 w-full bg-slate-100 mx-auto mt-10 rounded-sm">
+  <div v-if="cityName" class="max-w-2xl p-6 w-full bg-slate-100 mx-auto mt-10 rounded-md">
     <span class="block text-3xl text-center mb-4 font-medium">{{ cityName }}</span>
-    <span class="block text-lg text-center my-4">Temperature: {{ cityTemp }}</span>
-    <span class="block text-lg text-center mt-4">Description: {{ cityDesc }}</span>
+    <span v-if="cityName" class="block text-lg text-center my-4">Temperature: {{ cityTemp }}</span>
+    <span v-if="cityName" class="block text-lg text-center mt-4">Description: {{ cityDesc }}</span>
   </div>
 
 </template>
+
+<style scoped>
+@media only screen and (max-width: 600px) {
+  .todo{
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .header{
+    margin-right: 2px;
+  }
+  .col{
+    flex-direction: column;
+    text-align: left;
+  }
+}
+</style>
